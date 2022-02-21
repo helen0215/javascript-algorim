@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function solution(m, arr) {
+    const length = arr.length;
+    let answer = p1 = p2 = sum = 0;
+    
+    for (;p1 < length; p1++) {
+      const item = arr[p1];
+      sum += item;
+    
+      if (item <= m) {
+        answer++;
+      }
+    
+      if (p1 !== 0 && sum <= m) {
+        answer++;
+      }
+    
+      while (sum >= m && p2 < p1-1) {
+        sum -= arr[p2];
+    
+        if ((p1 - p2) === 1) {
+          break;
+        }
+    
+        if (sum <= m) {
+          answer++;
+        }
+    
+        p2++;
+      }
+    }
+    return answer;
+  }
+
+  let a=[1, 3, 1, 2, 3];
+  console.log(solution(5, a)); // 10
+</script>
+</body>
+</html>
