@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function solution(str, t) {
+      let answer = 0;
+  
+      const correctTable = new Map();
+      const table = new Map();
+  
+      function countAnagram() {
+        for(const [key] of correctTable.entries()) {
+          if (correctTable.get(key) !== table.get(key)) {
+            return;
+          }
+        }
+        answer++;
+      }
+  
+      for (let s of t) {
+        if (correctTable.has(t)) {
+          correctTable.set(s, correctTable.get(s) + 1);
+        } else {
+          correctTable.set(s, 1);
+        }
+      }
+  
+      for (let i = 0; i < t.length; i++) {
+        const s = str[i];
+        if (table.has(s)) {
+          table.set(s, table.get(s) + 1);
+        } else {
+          table.set(s, 1);
+        }  
+      }
+      countAnagram();
+  
+      const tLength = t.length;
+      for (let j = tLength; j < str.length; j++) {
+        const preS = str[j-tLength];
+        const currS = str[j];
+  
+        table.set(preS, table.get(preS) - 1);
+        table.set(currS, table.get(currS) + 1);
+        countAnagram();
+      }
+      
+      return answer;
+    }
+  
+    console.log(solution('bacaAacba', 'abc')); // 3
+  </script>
+</body>
+</html>
