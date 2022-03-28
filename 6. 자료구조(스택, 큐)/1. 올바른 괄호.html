@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function solution(s) {
+    const OPEN_BRAKETS = '(';
+    const CLOSE_BRACKET = ')';
+    const stack = [];
+    const bracketsLength = s.length;
+    let answer = 'YES';
+
+    for(let i = 0; i < bracketsLength; i++) {
+      const bracket = s[i];
+      if (bracket === OPEN_BRAKETS) {
+        if (i === bracketsLength-1 && stack.length > 0) {
+          answer = 'NO';
+          break;
+        }
+        
+        stack.push(bracket);
+      } else if (bracket === CLOSE_BRACKET) {
+        const lastBracket = stack.pop();
+    
+        if (
+            (i === bracketsLength-1 && stack.length > 0) ||
+            !lastBracket || 
+            lastBracket === CLOSE_BRACKET
+          ) {
+          answer = 'NO';
+          break;
+        }
+      }
+    }
+    
+    return answer;
+  }
+
+  let a = "(()(()))(()";
+  console.log(solution(a)); // NO
+</script>
+</body>
+</html>
