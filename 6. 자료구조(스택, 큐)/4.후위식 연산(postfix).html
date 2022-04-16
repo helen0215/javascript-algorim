@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function solution(str) {
+    let answer = null;
+    const numStack = [];
+    const strLength = str.length;
+    const numRegExp = /[0-9]/;
+    const OPERATOR = {
+      PLUS: '+',
+      MINUS: '-',
+      MUL: '*',
+      DIV: '/'
+    };
+    
+    function calc(lt, rt, operator) {
+      switch (operator) {
+        case OPERATOR.PLUS:
+          return lt + rt;
+        case OPERATOR.MINUS:
+          return lt - rt;
+        case OPERATOR.MUL:
+          return lt * rt;
+        case OPERATOR.DIV:
+          return lt / rt;
+      }
+    }
+
+    for (const s of str) {
+      if (numRegExp.test(s)) { // !isNaN(x) 로 판별하는 방법도 있음 
+        numStack.push(+s);
+      } else {
+        const rt = numStack.pop();
+        const lt = numStack.pop();
+        answer = calc(lt, rt, s);
+        numStack.push(answer);
+      }
+    }
+
+    return answer;
+  }
+
+  let str="352+*9-";
+  console.log(solution(str)); // 12
+</script>
+</body>
+</html>
