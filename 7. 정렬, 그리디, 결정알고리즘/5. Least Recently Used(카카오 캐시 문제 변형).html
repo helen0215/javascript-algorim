@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Least Recently Used(카카오 캐시 문제 변형)</title>
+</head>
+<body>
+<script>
+  function solution(size, arr){
+    let answer = Array.from({length:size}, ()=>0);
+
+    for(let i = 0; i < arr.length; i++) {
+      let job = arr[i];
+      let hit = false;
+      let j;
+      for (j = 0; j < answer.length; j++) {
+        if (answer[j] === job) {
+          hit = true;
+          break;
+        }
+      }
+
+      // 이 방법 외에  항상 0번째에 job을 넣고
+      // hit할 위치 j가 있으면 j부터 1까지, 없으면 size-1 부터 1까지 j에 j-1를 를 순차적으로 값을 미는 방법이 있다
+      hit ? answer.splice(j, 1) : answer.pop();
+      answer.unshift(job);
+    }
+
+    return answer;
+  }
+
+  let arr=[1, 2, 3, 2, 6, 2, 3, 5, 7];
+  console.log(solution(5, arr)); // 75326
+</script>
+</body>
+</html>
