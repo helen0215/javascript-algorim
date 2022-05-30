@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>결혼식</title>
+</head>
+<body>
+<script>
+  function solution(times){
+    const FLAG = {
+      START: 's',
+      END: 'e'
+    };
+
+    let answer = Number.MIN_SAFE_INTEGER;
+    let count = 0;
+    let sortedTimes = [];
+    
+    times.forEach(time => {
+      sortedTimes.push([time[0], FLAG.START], [time[1], FLAG.END]);
+    });
+
+    sortedTimes.sort((a, b) => {
+      if (a[0] === b[0]) {
+        return a[1] === FLAG.END ? -1 : 1; // 또는 a[1].charCodeAt()-b[1].charCodeAt();
+      } else {
+        return a[0] - b[0];
+      }
+    });
+
+    for(const [_, flag] of sortedTimes) {
+      if (flag === FLAG.START) {
+        count++;
+        answer = Math.max(answer, count);
+      } else {
+        count--;
+      }
+    }
+ 
+    return answer;
+  }
+
+  let arr=[[14, 18], [12, 15], [15, 20], [20, 30], [5, 14]]; 
+  console.log(solution(arr)); // 2
+</script>
+</body>
+</html>
