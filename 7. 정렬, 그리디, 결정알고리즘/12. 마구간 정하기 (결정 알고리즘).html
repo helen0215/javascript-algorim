@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마구간 정하기 (결정 알고리즘)</title>
+</head>
+<body>
+<script>
+  function solution(c, stable){
+    const sortedArr = [...stable].sort((a, b) => a - b);
+    let answer = -1;
+    let lt = sortedArr[1] - sortedArr[0];
+    let rt = sortedArr[stable.length - 1] - sortedArr[0];
+
+    function getCount (stables, dist) {
+      let endPoint = stables[0];
+      let count = 1;
+
+      for(let i = 1; i < stables.length; i++) {
+        const targetPoint = stables[i];
+        if (targetPoint - endPoint >= dist) {
+          endPoint = targetPoint;
+          count++;
+        }
+      }
+      return count;    
+    }
+
+    while (lt <= rt) {
+      let mid = parseInt((lt + rt) / 2, 10);
+
+      if (getCount(sortedArr, mid) >= c) {
+        answer = mid;
+        lt = mid + 1;
+      } else {
+        rt = mid - 1;  
+      }
+    }
+
+    return answer;
+  }
+
+  let arr=[1, 2, 8, 4, 9];
+  console.log(solution(3, arr)); // 3
+</script>
+</body>
+</html>
