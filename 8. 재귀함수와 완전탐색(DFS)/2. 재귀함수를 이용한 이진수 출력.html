@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>재귀함수를 이용한 이진수 출력</title>
+</head>
+<body>
+<script>
+  function solution(n) {
+    let answer = '';
+
+    function binary(n) {
+      if (n === 0) {
+        return;
+      } else {
+        binary(parseInt(n/2, 10));
+        answer += String(n%2);
+      }
+    }
+
+    binary(n);
+
+    return answer;
+  }
+
+  console.log(solution(11)); // 1011
+</script>
+</body>
+</html>
