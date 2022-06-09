@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부분집합 구하기(이진트리 DFS)</title>
+</head>
+<body>
+<script>
+  function solution(n) {
+    let answer = [];
+    let checkArr = Array.from({length: n+1}, () => 0);
+    function DFS(v) {
+      if (v === n+1) {
+        let temp = '';
+        checkArr.forEach((value, index) => {
+          if (value === 1) {
+            temp += `${index} `;
+          }
+        });
+
+        if (temp !== '') {
+          answer.push(temp.trim());
+        }
+      } else {
+        checkArr[v] = 1;
+        DFS(v+1);
+        checkArr[v] = 0;
+        DFS(v+1);
+      }
+    }
+
+    DFS(1);
+    return answer;
+  }
+
+  // 1 2 3
+  // 1 2
+  // 1 3
+  // 1
+  // 2 3 
+  // 2
+  // 3
+  console.log(solution(3));
+</script>
+</body>
+</html>
