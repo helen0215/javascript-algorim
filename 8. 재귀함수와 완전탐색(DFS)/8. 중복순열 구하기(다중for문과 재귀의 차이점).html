@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>중복순열 구하기(다중for문과 재귀의 차이점)</title>
+</head>
+<body>
+<script>
+  function solution(m, arr){  
+    const answer = [];
+    const length = arr.length;
+    const temp = Array.from({length: m}, () =>0);
+    // check 배열을 사용하여 중복순열을 제거할 수 있다
+    // const check = Array.from({length}, () => 0);
+    // for 문을 사용하면 m 만큼 for문이 중복되고 동적으로 만들 수 없지만 재귀를 사용하면 가능하다
+
+    function DFS(L) {
+      if (L === m) {
+        answer.push([...temp]);
+      } else {
+        for(let i = 0; i < length; i++) {
+          // if(check[i] === 0) {
+          //   check[i] = 1;
+            temp[L] = arr[i];
+            DFS(L+1);
+          //   check[i] = 0;
+          // }
+        }
+        
+      }
+    }
+
+    DFS(0);
+    return answer;
+  }
+
+  let arr=[3, 6, 9];
+  console.log(solution(2, arr)); // 3,3 3,6 3,9 6,3 6,6 ...
+</script>
+</body>
+</html>
