@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>동전교환(DFS-Cut Edge Tech)</title>
+</head>
+<body>
+<script>
+  function solution(m, arr){
+    let answer = Number.MAX_SAFE_INTEGER;
+    const length = arr.length;
+    
+    function DFS(L, sum) {
+      if (sum > m) {
+        return;
+      }
+      if (L >= answer) {
+        return;
+      }
+      if (sum === m) {
+        if (sum === m) {
+          answer = Math.min(answer, L);
+        }
+      } else {
+        for(let i = 0; i < length; i++) {
+          // arr[L] 이 아니라 arr[i]를 더해줘야한다
+          DFS(L+1, arr[i] + sum);
+        }
+      }
+    }
+
+    DFS(0, 0);
+    return answer;
+  }
+
+  let arr=[1, 2, 5];
+  console.log(solution(15, arr)); // 3
+</script>
+</body>
+</html>

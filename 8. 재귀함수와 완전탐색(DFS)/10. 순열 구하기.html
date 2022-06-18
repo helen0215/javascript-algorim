@@ -4,21 +4,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>중복순열 구하기(다중for문과 재귀의 차이점)</title>
+  <title>순열 구하기</title>
 </head>
 <body>
 <script>
-  function solution(n, m){  
+  function solution(m, arr){
     const answer = [];
+    const length = arr.length;
     const temp = Array.from({length: m}, () =>0);
+    const check = Array.from({length}, () =>0);
 
     function DFS(L) {
       if (L === m) {
         answer.push([...temp]);
       } else {
-        for(let i = 1; i <= n; i++) {
-            temp[L] = i;
-            DFS(L+1);
+        for(let i = 0; i < length; i++) {
+            if (check[i] !== 1) {
+              check[i] = 1;
+              temp[L] = arr[i];
+              DFS(L+1);
+              check[i] = 0;
+            } 
         } 
       }
     }
@@ -27,7 +33,8 @@
     return answer;
   }
 
-  console.log(solution(3, 2)); // 1 1, 1 2, 1 3, 2 1, 2 2,....
+  let arr=[3, 6, 9];
+  console.log(solution(2, arr));
 </script>
 </body>
 </html>
