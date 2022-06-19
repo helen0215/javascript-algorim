@@ -116,3 +116,8 @@ mid 값으로 주어진 크기만큼 주어진 조건을 만족하는지 비교�
 ## 집합
 부분집합은 공집합을 포함해서 2^n개가 존재
 
+## Combination
+<img width="141" alt="image" src="https://user-images.githubusercontent.com/60346043/174464910-34966345-124f-4bf1-a277-22610e552e6b.png"><br />
+또는<br />
+<img width="337" alt="image" src="https://user-images.githubusercontent.com/60346043/174464921-20fb212c-eefd-4a1c-b94a-169a074abfb7.png">
+5C3의 경우 5개중 3개를 뽑는 조합은 4C2(5를 포함한 경우) + 4C3(5를 포함하지 않는 경우)

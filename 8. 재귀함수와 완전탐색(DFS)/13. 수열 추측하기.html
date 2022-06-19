@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수열 추측하기</title>
+</head>
+<body>
+<script>
+  function solution(n, f){
+    let answer = null;
+    const dy = Array.from(Array(11), ()=>Array(11).fill(0));
+    const check = Array.from({length: n + 1}, () => 0);
+    const p = Array.from({length: n}, () => 0); 
+    const b = Array.from({length: n}, () => 0);
+
+    function combi(n, r) {
+      if (dy[n][r] > 0) {
+        return dy[n][r];
+      }
+      if (n === r || r === 0) {
+        return 1;
+      } else {
+        return dy[n][r] = combi(n-1, r-1) + combi(n-1, r);
+      }
+    }
+
+    function DFS(L, sum) {
+      if (answer) {
+        return;
+      }
+      if (L === n && sum === f) {
+        answer = [...p];
+      } else {
+        for (let i = 1; i <= n; i++) {
+          if(check[i] === 0) {
+            check[i] = 1;
+            // p는 push, pop으로 구현해도 됨 (현재는 덮어씌우는 형태)
+            p[L] = i;
+            DFS(L + 1, sum + (b[L] * p[L]));
+            check[i] = 0;
+          }
+        }
+      }
+    }
+    
+    for (let i = 0; i < n; i++) {
+      b[i] = combi(n-1, i);
+    }
+
+    DFS(0, 0);
+    return answer;
+  }
+  console.log(solution(4, 16)); // 3 1 2 4
+</script>
+</body>
+</html>
