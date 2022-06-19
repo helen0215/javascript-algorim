@@ -30,6 +30,9 @@
       if (answer) {
         return;
       }
+      if (sum > f) {
+        return;
+      }
       if (L === n && sum === f) {
         answer = [...p];
       } else {
