@@ -126,3 +126,18 @@ mid 값으로 주어진 크기만큼 주어진 조건을 만족하는지 비교�
 N개중 M개를 뽑는다 => 조합을 구하면 되는 문제이다<br />
 1부터 4까지의 수 중 두개를 뽑는다고 했을때<br />
 1은 2, 3, 4 를 뽑을수 있고 2는 (1, 2) !== (2, 1)는 같기 때문에 빼고 3, 4를 뽑을 수 있다.
+
+# 그래프와 탐색
+
+## 그래프와 인접 행렬
+1. 무방향 그래프
+<img width="329" alt="image" src="https://user-images.githubusercontent.com/60346043/175026627-5896b0a0-9be8-48aa-99fc-b019d68c6840.png">
+
+2. 방향 그래프
+<img width="331" alt="image" src="https://user-images.githubusercontent.com/60346043/175026736-5c0eace5-459a-45f8-896c-41e7472f09f2.png">
+
+3. 가중치 방향 그래프
+<img width="342" alt="image" src="https://user-images.githubusercontent.com/60346043/175026777-1a27ba97-7ec0-4049-b3ac-69bdddbe662f.png">
+
+
+
