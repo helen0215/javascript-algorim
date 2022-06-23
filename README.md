@@ -1,7 +1,7 @@
-# javascript-algorim
-네 약점 알고리즘
+# javascript-algorithm
+네 약점 알고리듬
 
-> 알고리즘 풀때 도움 되는 팁 정리 
+> 알고리 풀때 도움 되는 팁 정리 
 
 # 대소문자 범위
 x.charCodeAt을 통해 아스키 코드로 바꾸어 검사하는 방법 <br/>
@@ -130,14 +130,31 @@ N개중 M개를 뽑는다 => 조합을 구하면 되는 문제이다<br />
 # 그래프와 탐색
 
 ## 그래프와 인접 행렬
+그래프의 각 노드(node, vertex, 정점, 꼭지점)과 엣지(edge, 간선)은 아래와 같이 표기한다.<br />
+```graph(V, E)```
+
+### 인접 행렬
 1. 무방향 그래프
 <img width="329" alt="image" src="https://user-images.githubusercontent.com/60346043/175026627-5896b0a0-9be8-48aa-99fc-b019d68c6840.png">
+
+<img width="587" alt="image" src="https://user-images.githubusercontent.com/60346043/175178992-a95f9392-7f58-4def-994b-af81f775b110.png">
+
+    a. 노드 1과 연결된 노드는 1행에서 1로 체크된 열, 예) 2, 3
+
+    b. 노드 2와 연결된 노드는 2행에서 1로 체크된 열, 예) 1, 4, 5
+
 
 2. 방향 그래프
 <img width="331" alt="image" src="https://user-images.githubusercontent.com/60346043/175026736-5c0eace5-459a-45f8-896c-41e7472f09f2.png">
 
+<img width="585" alt="image" src="https://user-images.githubusercontent.com/60346043/175179541-e51fe5bf-4aaf-4ef1-9d7c-7d1c5765fa38.png">
+    
+    a. 노드 3에서 갈 수 있는 노드는 1행에서 1로 체크된 열, 예) 4
+
+
 3. 가중치 방향 그래프
 <img width="342" alt="image" src="https://user-images.githubusercontent.com/60346043/175026777-1a27ba97-7ec0-4049-b3ac-69bdddbe662f.png">
 
+<img width="490" alt="image" src="https://user-images.githubusercontent.com/60346043/175179904-bb1465ba-c521-405f-a12b-f6103cf2fc37.png">
 
-
+    a. 노드 1에서 갈 수 있는 노드와 가중치는 1행에서 0이 아닌 열, 예) 2, 가중치는 2
