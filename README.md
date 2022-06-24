@@ -133,7 +133,7 @@ N개중 M개를 뽑는다 => 조합을 구하면 되는 문제이다<br />
 그래프의 각 노드(node, vertex, 정점, 꼭지점)과 엣지(edge, 간선)은 아래와 같이 표기한다.<br />
 ```graph(V, E)```
 
-### 인접 행렬
+### 인접 행렬 (노드 개수가 적을때)
 1. 무방향 그래프
 <img width="329" alt="image" src="https://user-images.githubusercontent.com/60346043/175026627-5896b0a0-9be8-48aa-99fc-b019d68c6840.png">
 
@@ -147,7 +147,7 @@ N개중 M개를 뽑는다 => 조합을 구하면 되는 문제이다<br />
 2. 방향 그래프
 <img width="331" alt="image" src="https://user-images.githubusercontent.com/60346043/175026736-5c0eace5-459a-45f8-896c-41e7472f09f2.png">
 
-<img width="585" alt="image" src="https://user-images.githubusercontent.com/60346043/175179541-e51fe5bf-4aaf-4ef1-9d7c-7d1c5765fa38.png">
+<img width="586" alt="image" src="https://user-images.githubusercontent.com/60346043/175530862-b7389f87-0d5f-4b50-bf46-066e91d841dc.png">
     
     a. 노드 3에서 갈 수 있는 노드는 1행에서 1로 체크된 열, 예) 4
 
@@ -158,3 +158,13 @@ N개중 M개를 뽑는다 => 조합을 구하면 되는 문제이다<br />
 <img width="490" alt="image" src="https://user-images.githubusercontent.com/60346043/175179904-bb1465ba-c521-405f-a12b-f6103cf2fc37.png">
 
     a. 노드 1에서 갈 수 있는 노드와 가중치는 1행에서 0이 아닌 열, 예) 2, 가중치는 2
+
+### 인접 리스트 (노드 개수가 많을때)
+<img width="585" alt="image" src="https://user-images.githubusercontent.com/60346043/175531328-8b62e99e-8d82-4762-88fe-ef0b7df4b17b.png">
+
+    a. 인접 행렬과 다르게 graph[v]에 해당 노드가 갈 수 있는 노드를 넣는 형태다. 예) 1행에 기록된 열들은 노드 1이 갈수 있는 다른 노드들.
+    
+    b. graph[v].length 만큼 돌면서 탐색한다.
+    
+    c. graph[v][i] = 갈 수 있는 노드
+
