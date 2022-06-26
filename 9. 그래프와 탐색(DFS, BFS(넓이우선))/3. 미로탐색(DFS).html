@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경로탐색(DFS-인접리스트 : 노드개수가 많을 때)</title>
+</head>
+<body>
+<script>
+  function solution(board){
+    let answer = 0;
+    const dx = [-1, 0, 1, 0];
+    const dy = [0, 1, 0, -1];
+
+    function DFS(x, y) {
+      if (x === 6 && y === 6) {
+        answer++;
+      } else {
+        for (let k = 0; k < 4; k++) {
+          let nx = x + dx[k];
+          let ny = y + dy[k];
+          if (
+            nx >= 0 && nx <= 6 &&
+            ny >= 0 && ny <= 6 &&
+            board[nx][ny] === 0
+          ) {
+            board[nx][ny] = 1;
+            DFS(nx, ny);
+            board[nx][ny] = 0;
+          }
+        }
+      }
+    }
+
+    board[0][0] = 1;
+    DFS(0, 0);
+    return answer;
+  }
+
+  // 7 * 7 격자판으로 크기가 정해진 문제  
+  let arr = [[0, 0, 0, 0, 0, 0, 0], 
+    [0, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 1, 0, 0, 0],
+    [1, 1, 0, 1, 0, 1, 1],
+    [1, 1, 0, 0, 0, 0, 1],
+    [1, 1, 0, 1, 1, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0]];
+  console.log(solution(arr));
+</script>
+</body>
+</html>
