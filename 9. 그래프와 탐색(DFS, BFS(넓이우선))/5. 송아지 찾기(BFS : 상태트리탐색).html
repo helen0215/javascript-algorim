@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>송아지 찾기(BFS : 상태트리탐색)</title>
+</head>
+<body>
+<script>
+  function solution(s, e){
+    let answer = 0;
+    const check = Array.from({length: 10001}, () => 0);
+    const dist = Array.from({length: 10001}, () => 0);
+    const queue = [];
+
+    check[s] = 1;
+    dist[s] = 0;
+    queue.push(s);
+
+    while (queue.length > 0) {
+      let v = queue.shift();
+      for(let nv of [v + 1, v - 1, v + 5]) {
+        if (check[nv] === 0 && nv > 0 && nv <= 10000) {
+          dist[nv] = dist[v] + 1;
+          if (dist[e] > 0) {
+            return dist[e];
+          }
+
+          check[nv] = 1;
+          queue.push(nv);
+        }
+      }
+    }
+    return answer;
+  }
+
+  console.log(solution(5, 14));
+</script>
+</body>
+</html>
