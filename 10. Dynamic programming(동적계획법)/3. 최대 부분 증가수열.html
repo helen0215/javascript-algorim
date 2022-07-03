@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최대 부분 증가수열</title>
+</head>
+<body>
+<script>
+  function solution(arr) {  
+    let answer = 0;
+    const length = arr.length;
+    const dynamicArr = Array.from({length}, () => 0);
+
+    dynamicArr[0] = 1;
+    for (let i = 1; i < length; i++) {
+      let max = 0;
+
+      for (let j = i - 1; j >= 0; j--) {
+        if (arr[j] < arr[i] && dynamicArr[j] > max) {
+          max = Math.max(max, dynamicArr[j]);
+        }
+      }
+
+      dynamicArr[i] = max + 1;
+      answer = Math.max(answer, dynamicArr[i]);
+    }
+
+    return answer;
+  }
+
+  let arr=[5, 3, 7, 8, 6, 2, 9, 4];
+  console.log(solution(arr)); // 4
+</script>
+</body>
+</html>
