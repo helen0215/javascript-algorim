@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>삼각형 판별하기</title>
+</head>
+<body>
+  <script>
+    function solution(a, b, c) { 
+      let answer = 'YES';
+      const total = a + b + c;
+      let max = a > b ? a : b;
+      max = max > c ? max : c;
+      
+      if (total - max <= max) {
+        answer = 'NO';
+      }
+
+      return answer;
+    }
+
+    console.log(solution(6, 7, 11)); // YES
+    console.log(solution(13, 33, 17)); // NO
+  </script> 
+</body>
+</html>
