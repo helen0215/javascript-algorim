@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>대문자 찾기</title>
+</head>
+<body>
+  <script>
+    function solution(str) {
+      let answer = 0;
+
+      // str.match(/[A-Z]/g).length; 로도 될것 같은데
+      for (const s of str) {
+        const charCode = s.charCodeAt();
+        if (charCode >= 65 && charCode <= 90) {
+          answer++;
+        }
+      }
+      
+      return answer;
+    }
+
+    console.log(solution('KoreaTimeGood')); // 3
+  </script>
+</body>
+</html>

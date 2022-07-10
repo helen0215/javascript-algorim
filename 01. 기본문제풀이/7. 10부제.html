@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>10부제</title>
+</head>
+<body>
+  <script>
+    function solution(day, arr) {
+      let answer = 0;
+      
+      for (const value of arr) {
+        if (value % 10 === day) {
+          answer++;
+        }
+      }
+      return answer;
+    }
+
+    // let arr=[25, 23, 11, 47, 53, 17, 33];
+    // console.log(solution(3, arr));  // 3
+
+    let arr = [12, 20, 54, 30, 87, 91, 30]; 
+    console.log(solution(0, arr));  // 3
+  </script>
+</body>
+</html>
