@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>격자판 최대합</title>
+</head>
+<body>
+  <script>
+    function solution(arr) {
+      let colSum = 0;
+      let rowSum = 0;
+      let crossLeftToRightSum = 0;
+      let crossRightToLeftSum = 0;
+      let answer;
+      const length = arr.length;
+
+      for (let i = 0; i < length; i++) {
+        let tempColSum = 0;
+        let tempRowSum = 0;
+        crossLeftToRightSum += arr[i][i];
+        crossRightToLeftSum += arr[i][length - i - 1];
+        for (let j = 0; j < length; j++)  {
+          tempColSum += arr[j][i];
+          tempRowSum += arr[i][j];
+        }
+        colSum = Math.max(colSum, tempColSum);
+        rowSum = Math.max(rowSum, tempRowSum);
+      }
+
+      answer = Math.max(colSum, rowSum, crossLeftToRightSum, crossRightToLeftSum);
+      
+      return answer;
+    }
+
+    let arr=[[10, 13, 10, 12, 15], 
+            [12, 39, 30, 23, 11],
+            [11, 25, 50, 53, 15],
+            [19, 27, 29, 37, 27],
+            [19, 13, 30, 13, 19]];
+    console.log(solution(arr)); // 155
+  </script>
+</body>
+</html>
