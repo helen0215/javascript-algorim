@@ -4,22 +4,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회문 문자열</title>
+  <title>유효한 팰린드롬</title>
 </head>
 <body>
   <script>
     function solution(str) {
-      let answer = 'NO';
-      const strLower = str.toLowerCase();
-
-      if (strLower.split('').reverse().join('') === strLower) {
-        answer = 'YES';
-      }
-      
-      return answer;
+      const filteredStr = str.toLowerCase().replace(/[^a-z]/g, '');
+      const reversedStr = filteredStr.split('').reverse().join('');
+      return filteredStr === reversedStr ? 'YES' : 'NO';
     }
 
-    let str="goooG";
+    let str="found7, time: study; Yduts; emit, 7Dnuof";
     console.log(solution(str)); // YES
   </script>
 </body>
