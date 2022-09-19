@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자열 압축</title>
+</head>
+<body>
+  <script>
+    function solution(str) {
+      let answer = '';
+      let curr = '';
+      let count = 1;
+      const strLength = str.length;
+      
+      for(let i = 0; i < strLength; i++) {
+        if (curr !== str[i]) {
+          if (count > 1) {
+            answer += String(count);
+          }
+
+          curr = str[i];
+          answer += curr;
+          count = 1;
+        } else {
+          count++;
+        }
+      }
+      
+      return answer;
+    }
+
+    let str="KKHSSSSSSSE";
+    console.log(solution(str)); //K2HS7E
+  </script>
+</body>
+</html>

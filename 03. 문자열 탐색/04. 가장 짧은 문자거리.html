@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가장 짧은 문자거리</title>
+</head>
+<body>
+  <script>
+    function solution(str, t) {
+      let answer = [];
+      let dist = 1000;
+      const strLength = str.length;
+
+      for (let i = 0; i < strLength; i++) {
+        if (str[i] === t) {
+          dist = 0;
+        } else {
+          dist++;
+        }
+        answer.push(dist);
+      }
+
+      dist = 1000;
+      for (let i = strLength - 1; i >= 0; i--) {
+        if (str[i] === t) {
+          dist = 0;
+        } else {
+          dist++;
+        }
+        
+        if (answer[i] > dist) {
+          answer[i] = dist;   
+        }
+      }
+      
+      return answer;
+    }
+
+    let str="teachermode";
+    console.log(solution(str, 'e')); // 10121012210
+  </script>
+</body>
+</html>
